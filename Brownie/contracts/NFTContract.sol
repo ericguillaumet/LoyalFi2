@@ -29,9 +29,18 @@ contract NFTContract is ERC1155, Ownable {
     }
 
     function uri(uint256 id) public view override returns (string memory) {
-        string memory baseURI = super.uri(0);
-        string memory tokenIdStr = uint256ToString(id);
-        return string(abi.encodePacked(baseURI, tokenIdStr));
+        if (id == UniswapGold) {
+            return
+                "https://ipfs.io/ipfs/QmPHTFuXUVRSckXPj7tBtRavMpMoNypvm99EzUUnUBRWrM?filename=json_gold.json";
+        } else if (id == UniswapSilver) {
+            return
+                "https://ipfs.io/ipfs/QmXpagCEXBNXKws7pMr89gMC278X16AFv1vLGaQ1GiMn1h?filename=silver.json";
+        } else if (id == UniswapBronze) {
+            return
+                "https://ipfs.io/ipfs/QmZkr8bWEA3yZ7ozaUtXDDSYF9AwzoDVQPBYEn4igfJmGk?filename=bronze.json";
+        }
+
+        revert("Unknown token ID");
     }
 
     function uint256ToString(
