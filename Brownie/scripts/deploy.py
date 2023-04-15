@@ -1,4 +1,4 @@
-from brownie import NFTContract, network, config, accounts, interface
+from Brownie import NFTContract, network, config, accounts, interface
 from scripts.scoring import get_full_list
 
 LOCAL_NETWOKRS = ["development", "mainnet-fork"]

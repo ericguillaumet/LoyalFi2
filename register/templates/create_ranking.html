@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block section %}
+
+<section id="Snapshot">
+    <h1>Create a New Ranking</h1>
+    <div class="form-container">
+        <form action="" id="subscribe" enctype="multipart/form-data">
+            <p>
+                <label for="name">Name of the ranking:</label>
+                <input type="text" name="name" id="name" placeholder="Name of the ranking">
+            </p>
+            <p>
+                <label for="smartcontract">Smart Contract address to check:</label>
+                <input type="text" name="smartcontract" id="smartcontract" placeholder="Smart Contract">
+                </input>
+            </p>
+            <div class="checkbox-container">
+                <label for="name">Behavior/s to track:</label>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="liquidity_provided" id="liquidity_provided">
+                    <label for="liquidity_provided">Liquidity provided</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="amount_of_swaps" id="amount_of_swaps">
+                    <label for="amount_of_swaps">Amount of swaps</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="volume_traded" id="volume_traded">
+                    <label for="volume_traded">Volume traded</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="first_transaction" id="first_transaction">
+                    <label for="first_transaction">First transaction (antiquity)</label>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button type="button" class="cancel-button">Cancel</button>
+                <a href="/weights"><button class="button"> Create</button></a>
+            </div>
+            
+        </form>
+    </div>
+</section>
+
+{% endblock %}

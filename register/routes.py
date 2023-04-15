@@ -15,7 +15,7 @@ def claim():
         address_list = get_address_list()
 
         if wallet_address.lower() in address_list:
-            result = "Your wallet is eligible."
+            result = "Your wallet is eligible. Connect your wallet in order to mint it!"
         else:
             result = "Your wallet is not eligible."
 
@@ -103,3 +103,18 @@ def ranking():
 @app.route("/snapshot", methods=["GET"])
 def snapshot():
     return render_template("snapshot.html", pageTitle="Snapshot")
+
+@app.route("/which_protocol", methods=("GET", "POST"))
+
+def which_protocol():
+    return render_template("which_protocol.html", pageTitle="Which Protocol")
+
+@app.route("/create_ranking", methods=("GET", "POST"))
+
+def create_ranking():
+    return render_template("create_ranking.html", pageTitle="Create Ranking")
+
+@app.route("/which_protocol", methods=("GET", "POST"))
+
+def which_protocol():
+    return render_template("which_protocol.html", pageTitle="Which Protocol")
