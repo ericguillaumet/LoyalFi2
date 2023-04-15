@@ -27,7 +27,7 @@ silver_end = gold_end + one_third
 
 
 def get_gold_list():
-    return wallet_list[0:gold_end]
+    return wallet_list[:gold_end]
 
 
 def get_silver_list():
