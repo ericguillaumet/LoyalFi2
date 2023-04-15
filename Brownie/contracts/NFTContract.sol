@@ -22,28 +22,67 @@ contract NFTContract is ERC1155, Ownable {
         address[] memory _GoldUserList,
         address[] memory _SilverUserList,
         address[] memory _BronzeUserList
-    ) ERC1155("https://my-api-url.com/api/token/{id}") {
+    ) ERC1155("https://my-api-url.com/api/token/%22") {
+        addToWLGOLD(_GoldUserList);
+        addToWLSilver(_SilverUserList);
+        addToWLBronze(_BronzeUserList);
+    }
+
+    function uri(uint256 id) public view override returns (string memory) {
+        if (id == UniswapGold) {
+            return
+                "https://ipfs.io/ipfs/QmPHTFuXUVRSckXPj7tBtRavMpMoNypvm99EzUUnUBRWrM?filename=json_gold.json";
+        } else if (id == UniswapSilver) {
+            return
+                "https://ipfs.io/ipfs/QmXpagCEXBNXKws7pMr89gMC278X16AFv1vLGaQ1GiMn1h?filename=silver.json";
+        } else if (id == UniswapBronze) {
+            return
+                "https://ipfs.io/ipfs/QmZkr8bWEA3yZ7ozaUtXDDSYF9AwzoDVQPBYEn4igfJmGk?filename=bronze.json";
+        }
+
+        revert("Unknown token ID");
+    }
+
+    function uint256ToString(
+        uint256 num
+    ) internal pure returns (string memory) {
+        if (num == 0) {
+            return "0";
+        }
+        uint256 temp = num;
+        uint256 digits;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        bytes memory buffer = new bytes(digits);
+        while (num != 0) {
+            digits--;
+            buffer[digits] = bytes1(uint8(48 + (num % 10)));
+            num /= 10;
+        }
+        return string(buffer);
+    }
+
+    function addToWLGOLD(address[] memory _GoldUserList) internal {
+        for (uint256 i = 0; i < _GoldUserList.length; i++) {
+            WLGold[_GoldUserList[i]] = true;
+        }
         GoldUserList = _GoldUserList;
+    }
+
+    function addToWLSilver(address[] memory _SilverUserList) internal {
+        for (uint256 i = 0; i < _SilverUserList.length; i++) {
+            WLSilver[_SilverUserList[i]] = true;
+        }
         SilverUserList = _SilverUserList;
+    }
+
+    function addToWLBronze(address[] memory _BronzeUserList) internal {
+        for (uint256 i = 0; i < _BronzeUserList.length; i++) {
+            WLBronze[_BronzeUserList[i]] = true;
+        }
         BronzeUserList = _BronzeUserList;
-    }
-
-    function addToWLGOLD(address[] memory GoldUserList) public onlyOwner {
-        for (uint256 i = 0; i < GoldUserList.length; i++) {
-            WLGold[GoldUserList[i]] = true;
-        }
-    }
-
-    function addToWLSilver(address[] memory SilverUserList) public onlyOwner {
-        for (uint256 i = 0; i < SilverUserList.length; i++) {
-            WLSilver[SilverUserList[i]] = true;
-        }
-    }
-
-    function addToWLBronze(address[] memory BronzeUserList) public onlyOwner {
-        for (uint256 i = 0; i < BronzeUserList.length; i++) {
-            WLBronze[BronzeUserList[i]] = true;
-        }
     }
 
     function mintGoldNFT() public {
@@ -51,5 +90,19 @@ contract NFTContract is ERC1155, Ownable {
         require(!isMinted[msg.sender], "NFT already minted for the caller");
         isMinted[msg.sender] = true;
         _mint(msg.sender, UniswapGold, 1, "");
+    }
+
+    function mintSilverNFT() public {
+        require(WLSilver[msg.sender], "Caller is not in the silver whitelist");
+        require(!isMinted[msg.sender], "NFT already minted for the caller");
+        isMinted[msg.sender] = true;
+        _mint(msg.sender, UniswapSilver, 1, "");
+    }
+
+    function mintBronzeNFT() public {
+        require(WLBronze[msg.sender], "Caller is not in the bronze whitelist");
+        require(!isMinted[msg.sender], "NFT already minted for the caller");
+        isMinted[msg.sender] = true;
+        _mint(msg.sender, UniswapBronze, 1, "");
     }
 }
