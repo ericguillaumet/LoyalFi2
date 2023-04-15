@@ -4,10 +4,14 @@ from scripts.scoring import get_full_list
 LOCAL_NETWOKRS = ["development", "mainnet-fork"]
 
 
-def deploy():
+def deploy(gold_list, silver_list, bronze_list):
     account = get_account()
     NFTContract.deploy(
-        {"from": account}, publish_source=config["networks"][network.show_active]
+        gold_list,
+        silver_list,
+        bronze_list,
+        {"from": account},
+        publish_source=config["networks"][network.show_active()],
     )
 
 

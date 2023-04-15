@@ -28,21 +28,21 @@ contract NFTContract is ERC1155, Ownable {
         BronzeUserList = _BronzeUserList;
     }
 
-    function addToWLGOLD(address[] memory GoldUserList) public onlyOwner {
-        for (uint256 i = 0; i < GoldUserList.length; i++) {
-            WLGold[GoldUserList[i]] = true;
+    function addToWLGOLD(address[] memory goldUsers) public onlyOwner {
+        for (uint256 i = 0; i < goldUsers.length; i++) {
+            WLGold[goldUsers[i]] = true;
         }
     }
 
-    function addToWLSilver(address[] memory SilverUserList) public onlyOwner {
-        for (uint256 i = 0; i < SilverUserList.length; i++) {
-            WLSilver[SilverUserList[i]] = true;
+    function addToWLSilver(address[] memory silverUsers) public onlyOwner {
+        for (uint256 i = 0; i < silverUsers.length; i++) {
+            WLSilver[silverUsers[i]] = true;
         }
     }
 
-    function addToWLBronze(address[] memory BronzeUserList) public onlyOwner {
-        for (uint256 i = 0; i < BronzeUserList.length; i++) {
-            WLBronze[BronzeUserList[i]] = true;
+    function addToWLBronze(address[] memory bronzeUsers) public onlyOwner {
+        for (uint256 i = 0; i < bronzeUsers.length; i++) {
+            WLBronze[bronzeUsers[i]] = true;
         }
     }
 
@@ -51,5 +51,19 @@ contract NFTContract is ERC1155, Ownable {
         require(!isMinted[msg.sender], "NFT already minted for the caller");
         isMinted[msg.sender] = true;
         _mint(msg.sender, UniswapGold, 1, "");
+    }
+
+    function mintSilverNFT() public {
+        require(WLSilver[msg.sender], "Caller is not in the gold whitelist");
+        require(!isMinted[msg.sender], "NFT already minted for the caller");
+        isMinted[msg.sender] = true;
+        _mint(msg.sender, UniswapSilver, 1, "");
+    }
+
+    function mintBronzeNFT() public {
+        require(WLBronze[msg.sender], "Caller is not in the gold whitelist");
+        require(!isMinted[msg.sender], "NFT already minted for the caller");
+        isMinted[msg.sender] = true;
+        _mint(msg.sender, UniswapBronze, 1, "");
     }
 }
