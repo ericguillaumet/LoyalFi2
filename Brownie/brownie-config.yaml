@@ -1,0 +1,16 @@
+dotenv: .env
+wallets:
+  from_key: ${PRIVATE_KEY}
+compiler:
+  solc:
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.2"
+dependencies:
+  - "aave/protocol-v2@1.0.1"
+  - "smartcontractkit/chainlink-brownie-contracts@0.6.1"
+  - "OpenZeppelin/openzeppelin-contracts@4.8.2"
+networks:
+  goerli:
+    publish_source: True
+  mainnet-fork:
+    publish_source: False

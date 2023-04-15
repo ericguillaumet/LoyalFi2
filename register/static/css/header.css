@@ -1,0 +1,36 @@
+.header {
+    height: 35vh;
+    padding: 50px;
+
+    background: url('img/Wallpaper.png') top left no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 30;
+}
+
+.header-content {
+    position: absolute;
+    padding: 2rem;
+    z-index: 32;
+}
+
+.header-content > h1 {
+    text-align: center;
+    border-bottom: 1px solid var(--bg-green);
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.header-content > .tagline {
+    margin: 0;
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.header-content .promo-text {
+    margin: 40% 2rem 0 2rem;
+    background-color: rgba(255, 255, 255, .25);
+    padding: 2rem;
+    text-shadow: black 1px 1px;
+}

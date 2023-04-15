@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Merriweather:ital,wght@0,400;1,700&family=Monda:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/variables.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/button.css">
+    <link rel="stylesheet" href="/static/css/ranking.css">
+    <link rel="stylesheet" href="/static/css/snapshot.css">
+
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <nav class="navbar">
+        <div class="logo">          
+        <a href="/"></a>Loyal<span>Fi</span>
+        </div>
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <a href="/">Landing page</a>
+            </li>
+            <li class="navbar-item">
+                <a href="/ranking">Explore rankings</a>
+            </li>
+            <li class="navbar-item">
+                <a href="/claim">Claim my reward</a>
+            </li>
+            <li class="navbar-item">
+                <a href="/rank">Create a new ranking</a>
+            </li>
+            <li class="navbar-item">
+                <a href="/snapshot">Take snapshot</a>
+            </li>
+            <li class="navbar-item">
+                <button id="connect-wallet-button">Connect Wallet</button>
+            </li>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  const connectWalletButton = document.getElementById("connect-wallet-button");
+                
+                  // Check if MetaMask is installed
+                  if (typeof window.ethereum === "undefined") {
+                    alert("Please install MetaMask to use this dApp!");
+                  }
+                
+                  connectWalletButton.addEventListener("click", async () => {
+                    try {
+                      // Request account access
+                      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                
+                      // MetaMask connection successful
+                      const account = accounts[0];
+                      console.log("Connected to account:", account);
+                
+                      // Communicate with the Python backend
+                      // For example, send an AJAX request or call a RESTful API
+                    } catch (error) {
+                      console.error("MetaMask connection failed:", error);
+                    }
+                  });
+                });
+                </script>
+        </ul>
+    </nav>
+    
+    <section>
+        {% block section %}
+        {% endblock %}
+    </section>
+
+</body>
+</html>
+    <footer class="footer">
+        <aside class="links">
+            <ul class="link-list">
+                <li><a href="https://twitter.com/ETHGlobal" target="_blank" rel="nofollow noopener no referrer">Twitter</a></li>
+                <li><a href="https://discord.gg/ethglobal" target="_blank" rel="nofollow noopener no referrer">Discord</a></li> 
+                <li><a href="https://www.youtube.com/@ETHGlobal" target="_blank" rel="nofollow noopener no referrer">Youtube</a></li> 
+            </ul>
+        </aside>
+        <aside class="copyright">
+            <ul class="copyright-position">
+                &copy; 2023 - LoyalFi
+            </ul>
+        </aside>
+    </footer>

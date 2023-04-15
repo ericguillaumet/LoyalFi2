@@ -1,0 +1,70 @@
+*{
+  font-family: 'Monda', Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Monda', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  text-align: center;   
+}
+
+.text {
+  font-family: 'Monda', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-align: center;  
+}
+
+a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.logo, .logo span {
+  font-family: 'Gugi', Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  text-transform: uppercase;
+  color: var(--bg-blue)
+}
+
+.logo span{
+  color: var(--white-color);
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  padding: 0 1rem;
+  background-color: var(--dark-color);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 75%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.feedback {
+  padding: 0 1rem;
+  font-size: 1.50rem;
+}
+
+.xl {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 480px) {
+  .container {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+  }
+  .header-content {
+      max-width: var(--content-max-width);
+      left: 50%;
+      transform: translateX(-50%);
+  }
+}

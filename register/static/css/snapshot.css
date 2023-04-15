@@ -1,0 +1,66 @@
+#Snapshot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+.form-container {
+  max-width: var(--content-max-width);
+  width: 40%; /* Updated width */
+  border: 2px solid var(--bg-blue);
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-color);
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="submit"] {
+  background-color: var(--bg-blue);
+  color: var(--white-color);
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0f9ac4;
+}
+
+form .file-input {
+  position: relative;
+  width: 100%;
+}
+
+form .file-input input[type="file"] {
+  display: none;
+}
+
+form .file-input label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--light-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form .file-input label:hover {
+  background-color: var(--white-color);
+}
+
+form .file-input span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block section %}
+
+<section id="Snapshot">
+    <h1>Snapshot Set Up</h1>
+    <div class="form-container">
+        <form action="" id="subscribe" enctype="multipart/form-data">
+            <h2>Snapshot Conditions</h2>
+            <p>
+                <label for="leaderboard">Select leaderboard:</label>
+                <select name="leaderboard" id="leaderboard">
+                    <option value="Uniswap">Uniswap</option>
+                    <option value="Quickswap">Quickswap</option>
+                </select>
+            </p>
+            <p>
+                <label for="datetime">Time and date:</label>
+                <input type="datetime-local" name="datetime" id="datetime">
+            </p>
+            <p>
+                <label for="ranklimit">Rank limit:</label>
+                <input type="number" name="ranklimit" id="ranklimit">
+            </p>
+            <h2>NFT to Claim</h2>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Name of the NFT">
+            </p>
+            <p>
+                <label for="metadata">Metadata:</label>
+                <input type="metadata" name="metadata" id="metadata" placeholder="Metadata"></input>
+            </p>
+
+            <p>
+                <label for="updatefile">Update a file:
+                <input type="file" name="updatefile" id="updatefile">
+                </label>
+            </p>
+            <p>
+                <input type="submit" value="Mint">
+            </p>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

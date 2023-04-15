@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block section %}
+
+<section class="container">
+    <h1>Check your eligibility in order to claim your prize</h1>
+
+    <form action="/claim" method="post" class="forms">
+        <label for="wallet_address">Enter your wallet address:</label>
+        <input type="text" name="wallet_address" id="wallet_address" required>
+        <br>
+        <button class="button">Check</button>
+    </form>
+    {% if result %}
+    <br>
+    <div class="result">{{ result }}</div>
+    {% endif %}
+
+    <script>
+        let userAddress;
+        async function connectWallet() {
+        if (typeof window.ethereum !== 'undefined') {
+            try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            userAddress = accounts[0];
+            document.getElementById('walletAddress').innerText = `Connected: ${userAddress}`;
+            } catch (error) {
+            console.error(error);
+            }
+        } else {
+            alert('MetaMask is not installed. Please consider installing it to proceed.');
+        }
+        }
+        document.getElementById('connectWallet').addEventListener('click', connectWallet);
+      </script>
+
+      <p id="walletAddress"></p>
+
+</section>
+
+{% endblock %}

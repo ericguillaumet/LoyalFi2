@@ -1,0 +1,74 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    z-index: 99;
+}
+
+.navbar .logo {
+    display: none;
+    padding-left: 10px;
+}
+
+.navbar-list{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-item {
+    display: inline-block;
+    margin: 0 .25rem;
+    padding: 0;
+    
+}
+
+.navbar-item a {
+    display: block;
+    padding: 1rem;
+    color: var(--light-color);
+}
+
+.navbar-item a:hover {
+    background-color: var(--bg-blue);
+    color: var(--dark-color);
+}
+
+header {
+    clear: both;
+}
+
+@media (min-width: 780px){
+    .navbar > .logo {
+        display: block;
+        float: left;
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        color: var(--bg-blue)
+    }
+    .navbar > .navbar-list {
+        float: right;
+    }
+}
+
+.navbar-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  #connect-wallet-button {
+    background-color: var(--bg-blue);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #connect-wallet-button:hover {
+    background-color: var(--bg-blue);
+  }
