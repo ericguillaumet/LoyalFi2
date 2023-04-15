@@ -1,0 +1,1 @@
+We couldn't deploy in Gnosis because of the lack of gas fees in the faucet

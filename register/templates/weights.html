@@ -3,7 +3,8 @@
 
 <section id="Snapshot">
     <h1>Assign weights, from 0 to 100</h1>
-    <label>As the higher the score, the better the position in the ranking </label>
+    <label>The higher the weight, the more important it is for the ranking</label>
+    <br>
     <div class="form-container">
         <form action="" id="subscribe" enctype="multipart/form-data">
             <p>
@@ -22,6 +23,11 @@
                 <label for="name">First date of the transaction (antiquity):</label>
                 <input type="text" name="name" id="name" placeholder="Date of the transaction">
             </p>
+            <label>The total sum of weights should be 100 </label>
+            <a><button class="button"> Create
+            </button></a>    
         </div>
     </form>
 </section>
+
+{% endblock %}

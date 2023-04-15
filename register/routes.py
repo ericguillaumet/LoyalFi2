@@ -114,7 +114,7 @@ def which_protocol():
 def create_ranking():
     return render_template("create_ranking.html", pageTitle="Create Ranking")
 
-@app.route("/which_protocol", methods=("GET", "POST"))
+@app.route("/weights", methods=("GET", "POST"))
 
-def which_protocol():
-    return render_template("which_protocol.html", pageTitle="Which Protocol")
+def weights():
+    return render_template("weights.html", pageTitle="Weights")
